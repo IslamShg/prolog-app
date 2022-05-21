@@ -8,7 +8,7 @@ type ContainerProps = {
   theme: string
 }
 
-const Container = styled.div<ContainerProps>`
+const Container = styled.div<ContainerProps>` 
   padding: 0 20em;
   ${(props) => props.theme === 'dark' && 'background: black'}
 `
@@ -22,7 +22,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>123</main>
+      <main className={styles.main}>
+        <h1>Title here</h1>
+      </main>
 
       <footer className={styles.footer}></footer>
     </Container>
