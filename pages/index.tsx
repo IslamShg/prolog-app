@@ -13,7 +13,7 @@ const Container = styled.div<ContainerProps>`
   ${(props) => props.theme === 'dark' && 'background: black'}
 `
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   return (
     <Container theme="light" className={styles.container}>
       <Head>
@@ -31,4 +31,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default HomePage
