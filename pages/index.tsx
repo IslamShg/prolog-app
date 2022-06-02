@@ -8,7 +8,7 @@ type ContainerProps = {
   theme: string
 }
 
-const Container = styled.div<ContainerProps>` 
+const Container = styled.div<ContainerProps>`
   padding: 0 20em;
   ${(props) => props.theme === 'dark' && 'background: black'}
 `
