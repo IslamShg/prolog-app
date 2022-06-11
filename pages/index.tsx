@@ -1,17 +1,17 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import styled from 'styled-components'
+import type { NextPage } from "next";
+import Head from "next/head";
+import styled from "styled-components";
 
-import styles from '../styles/Home.module.css'
+import styles from "../styles/Home.module.css";
 
 type ContainerProps = {
-  theme: string
-}
+  theme: string;
+};
 
 const Container = styled.div<ContainerProps>`
   padding: 0 20em;
-  ${(props) => props.theme === 'dark' && 'background: black'}
-`
+  ${(props) => props.theme === "dark" && "background: black"}
+`;
 
 const HomePage: NextPage = () => {
   return (
@@ -28,7 +28,7 @@ const HomePage: NextPage = () => {
 
       <footer className={styles.footer}></footer>
     </Container>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
