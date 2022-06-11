@@ -48,9 +48,6 @@ const List = styled.ul`
 `
 
 export const SidebarNavigation = () => {
-  const name = 'islam'
-
-
   return (
     <Nav>
       <List>
