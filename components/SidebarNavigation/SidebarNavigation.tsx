@@ -4,9 +4,12 @@ import DashboardIcon from '@mui/icons-material/Dashboard'
 import WarningIcon from '@mui/icons-material/Warning'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble'
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import SettingsIcon from '@mui/icons-material/Settings'
 
-import { MenuItem } from './MenuItem'
+import { MenuItemLink } from './MenuItemLink'
+import { MenuItemButton } from './MenuItemButton'
 
 const menuItems = [
   {
@@ -52,13 +55,21 @@ export const SidebarNavigation = () => {
     <Nav>
       <List>
         {menuItems.map((item) => (
-          <MenuItem key={item.href} {...item} />
+          <MenuItemLink key={item.href} {...item} />
         ))}
       </List>
 
       <List>
-        <MenuItem text={'Support'} href={''} icon={''} />
-        <MenuItem text={'Support'} href={''} icon={''} />
+        <MenuItemButton
+          text={'Support'}
+          onClick={() => alert('Support')}
+          icon={<ChatBubbleIcon />}
+        />
+        <MenuItemButton
+          text={'Collapse'}
+          onClick={() => alert('Collapse')}
+          icon={<KeyboardBackspaceIcon />}
+        />
       </List>
     </Nav>
   )

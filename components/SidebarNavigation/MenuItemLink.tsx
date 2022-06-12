@@ -2,9 +2,10 @@ import Link from "next/link";
 import React, { FC } from "react";
 import styled from "styled-components";
 
-interface MenuItemProps {
+interface MenuItemLinkProps {
   text: string;
-  href: string;
+  href?: string;
+  onClick?: () => void
   icon?: React.ReactNode;
 }
 
@@ -26,10 +27,10 @@ const IconWrapper = styled.span`
   margin-right: 12px;
 `;
 
-export const MenuItem: FC<MenuItemProps> = ({ href, text, icon }) => {
+export const MenuItemLink: FC<MenuItemLinkProps> = ({ href, text, icon }) => {
   return (
     <ListItem>
-      <Link passHref href={href}>
+      <Link passHref href={href || ''}>
         <Anchor>
           <IconWrapper>{icon}</IconWrapper>
           {text}
