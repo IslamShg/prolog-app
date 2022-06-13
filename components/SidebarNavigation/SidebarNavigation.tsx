@@ -10,32 +10,34 @@ import SettingsIcon from '@mui/icons-material/Settings'
 
 import { MenuItemLink } from './MenuItemLink'
 import { MenuItemButton } from './MenuItemButton'
+import { Routes } from '../../config/routes'
+import { useRouter } from '../../__mocks__/next/router'
 
 const menuItems = [
   {
     text: 'Projects',
     icon: <DashboardIcon />,
-    href: '#'
+    href: Routes.projects
   },
   {
     text: 'Issues',
     icon: <BarChartIcon />,
-    href: '#'
+    href: Routes.issues
   },
   {
     text: 'Alerts',
     icon: <WarningIcon />,
-    href: '#'
+    href: Routes.alerts
   },
   {
     text: 'Users',
     icon: <PeopleOutlineIcon />,
-    href: '#'
+    href: Routes.users
   },
   {
     text: 'Settings',
     icon: <SettingsIcon />,
-    href: '#'
+    href: Routes.settings
   }
 ]
 
@@ -59,11 +61,16 @@ const LinkList = styled(List)`
 `
 
 export const SidebarNavigation = () => {
+  const router = useRouter()
   return (
     <Nav>
       <LinkList>
         {menuItems.map((item) => (
-          <MenuItemLink key={item.href} {...item} />
+          <MenuItemLink
+            key={item.href}
+            {...item}
+            isActive={router.pathname === item.href}
+          />
         ))}
       </LinkList>
 
