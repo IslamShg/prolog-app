@@ -8,6 +8,7 @@ interface MenuItemLinkProps {
   isActive?: boolean
   onClick?: () => void
   icon?: React.ReactNode
+  isCollapsed: boolean
 }
 
 const ListItem = styled.li<{ isActive: boolean }>`
@@ -38,14 +39,15 @@ export const MenuItemLink: FC<MenuItemLinkProps> = ({
   href,
   text,
   icon,
-  isActive = false
+  isActive = false,
+  isCollapsed
 }) => {
   return (
     <ListItem isActive={isActive}>
       <Link passHref href={href || ''}>
         <Anchor>
           <IconWrapper>{icon}</IconWrapper>
-          {text}
+          {!isCollapsed && text}
         </Anchor>
       </Link>
     </ListItem>

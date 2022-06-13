@@ -6,6 +6,7 @@ interface MenuItemButtonProps {
   href?: string
   onClick?: () => void
   icon?: React.ReactNode
+  isCollapsed: boolean
 }
 
 const ListItem = styled.li`
@@ -34,13 +35,14 @@ const IconWrapper = styled.span`
 export const MenuItemButton: FC<MenuItemButtonProps> = ({
   onClick,
   icon,
-  text
+  text,
+  isCollapsed
 }) => {
   return (
     <ListItem>
       <Button onClick={onClick}>
         <IconWrapper>{icon}</IconWrapper>
-        {text}
+        {!isCollapsed && text}
       </Button>
     </ListItem>
   )

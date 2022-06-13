@@ -1,12 +1,15 @@
 import type { AppProps } from 'next/app'
 
+import { NavigationProvider } from '../contexts/Navigation'
 import { GlobalStyle } from '../styles/GlobalStyles'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <GlobalStyle />
-      <Component {...pageProps} />
+      <NavigationProvider>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </NavigationProvider>
     </>
   )
 }
