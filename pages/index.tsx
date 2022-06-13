@@ -2,8 +2,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styled from 'styled-components'
 
-import { SidebarNavigation } from '../components/SidebarNavigation'
-
 type ContainerProps = {
   theme: string
 }
@@ -23,7 +21,6 @@ const HomePage: NextPage = () => {
       </Head>
 
       <main>
-        <SidebarNavigation />
         <h1>Title here</h1>
       </main>
 

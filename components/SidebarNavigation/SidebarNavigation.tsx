@@ -1,17 +1,19 @@
-import React from 'react'
-import styled from 'styled-components'
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import WarningIcon from '@mui/icons-material/Warning'
 import BarChartIcon from '@mui/icons-material/BarChart'
-import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble'
+import DashboardIcon from '@mui/icons-material/Dashboard'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
 import SettingsIcon from '@mui/icons-material/Settings'
+import WarningIcon from '@mui/icons-material/Warning'
+// import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import styled from 'styled-components'
 
-import { MenuItemLink } from './MenuItemLink'
-import { MenuItemButton } from './MenuItemButton'
 import { Routes } from '../../config/routes'
+import { NavigationContext } from '../../contexts/Navigation'
 import { useRouter } from '../../__mocks__/next/router'
+import { MenuItemButton } from './MenuItemButton'
+import { MenuItemLink } from './MenuItemLink'
 
 const menuItems = [
   {
@@ -41,13 +43,14 @@ const menuItems = [
   }
 ]
 
-const Nav = styled.nav`
+const Nav = styled.nav<{ collapsed: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 32px 16px;
-  width: 200px;
+  width: ${({ collapsed }) => (collapsed ? '50px' : '200px')};
   height: calc(100vh - 32px);
   background-color: #101828;
+  transition: 0.2s all;
 `
 
 const List = styled.ul`
@@ -62,11 +65,15 @@ const LinkList = styled(List)`
 
 export const SidebarNavigation = () => {
   const router = useRouter()
+  const { isSidebarCollapsed, toggleSidebarNavigation } =
+    useContext(NavigationContext)
+
   return (
-    <Nav>
+    <Nav collapsed={isSidebarCollapsed}>
       <LinkList>
         {menuItems.map((item) => (
           <MenuItemLink
+            isCollapsed={isSidebarCollapsed}
             key={item.href}
             {...item}
             isActive={router.pathname === item.href}
@@ -76,13 +83,15 @@ export const SidebarNavigation = () => {
 
       <List>
         <MenuItemButton
+          isCollapsed={isSidebarCollapsed}
           text={'Support'}
           onClick={() => alert('Support')}
           icon={<ChatBubbleIcon />}
         />
         <MenuItemButton
+          isCollapsed={isSidebarCollapsed}
           text={'Collapse'}
-          onClick={() => alert('Collapse')}
+          onClick={toggleSidebarNavigation}
           icon={<KeyboardBackspaceIcon />}
         />
       </List>
