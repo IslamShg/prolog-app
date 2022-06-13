@@ -40,24 +40,32 @@ const menuItems = [
 ]
 
 const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  padding: 32px 16px;
   width: 200px;
-  height: 100vh;
+  height: calc(100vh - 32px);
   background-color: #101828;
 `
 
 const List = styled.ul`
+  margin: 0;
+  padding: 0;
   list-style: none;
-  padding: 0 16px;
+`
+
+const LinkList = styled(List)`
+  flex: 1;
 `
 
 export const SidebarNavigation = () => {
   return (
     <Nav>
-      <List>
+      <LinkList>
         {menuItems.map((item) => (
           <MenuItemLink key={item.href} {...item} />
         ))}
-      </List>
+      </LinkList>
 
       <List>
         <MenuItemButton

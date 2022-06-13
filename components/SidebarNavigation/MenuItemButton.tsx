@@ -19,6 +19,8 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   color: #f2f4f7;
+  margin: 0;
+  padding: 0;
   text-decoration: none;
 `
 

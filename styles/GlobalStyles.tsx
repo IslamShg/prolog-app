@@ -8,6 +8,9 @@ export const GlobalStyle = createGlobalStyle`
  
   body {
     font-family: Inter, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   button {
